@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <app-page>
     Welcome to App.Vue
-  </div>
+  </app-page>
 </template>

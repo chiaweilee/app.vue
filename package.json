@@ -18,7 +18,8 @@
   },
   "keywords": [],
   "dependencies": {
-    "vue": "^2.5.16"
+    "vue": "^2.5.16",
+    "vue-functional-data-merge": "^2.0.6"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
