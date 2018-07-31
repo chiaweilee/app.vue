@@ -1,5 +1,5 @@
 <template>
   <app-page>
-    Welcome to App.Vue
+    Hello world
   </app-page>
 </template>

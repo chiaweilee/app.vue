@@ -1,12 +1,14 @@
 import Vue from 'vue'
+import use from 'vue-use'
 import App from './App.vue'
-
 import appVue from '../src/index'
 import '../src/scss/grid.scss'
 
 Vue.config.productionTip = false
 
-Vue.use(appVue)
+use(Vue, {
+  use: [appVue]
+})
 
 /* eslint-disable no-new */
 new Vue({
