@@ -1,5 +1,5 @@
-// <app-page/>
-import { tag } from './_props'
+// <app-title/>
+import { tag } from '../_props'
 
 export const props = {
   tag
@@ -14,7 +14,7 @@ export default {
       props.tag,
       {
         class: {
-          'app-page': true
+          'app-title': true
         }
       },
       children

@@ -1,8 +1,12 @@
-// <app-page/>
-import { tag } from './_props'
+// <app-topbar/>
+import { tag } from '../_props'
 
 export const props = {
-  tag
+  tag,
+  theme: {
+    type: String,
+    default: ''
+  }
 }
 
 export default {
@@ -14,7 +18,8 @@ export default {
       props.tag,
       {
         class: {
-          'app-page': true
+          'app-topbar': true,
+          [props.theme]: !!props.theme
         }
       },
       children
