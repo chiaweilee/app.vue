@@ -1,15 +1,17 @@
 import Vue from 'vue'
-import { page } from '../../../src/components'
 
-const propsData = {
-  tag: 'span'
+const test = {
+  text: 'Hello world',
+  className: 'app-page',
+  tagName: 'SPAN'
 }
 
 describe('page.js', () => {
   it('should render correct contents', () => {
-    const Constructor = Vue.extend(page)
-    const vm = new Constructor({propsData}).$mount()
-    expect(vm._props.tag).to.equal(propsData.tag)
-    expect(vm.$el.textContent).to.equal('')
+    const Constructor = Vue.extend({template: `<app-page tag="${test.tagName}">${test.text}</app-page>`})
+    const vm = new Constructor().$mount()
+    expect(vm.$el.tagName).to.equal(test.tagName)
+    expect(vm.$el.className).to.equal(test.className)
+    expect(vm.$el.textContent).to.equal(test.text)
   })
 })
