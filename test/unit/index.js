@@ -1,6 +1,9 @@
 import Vue from 'vue'
+import appVue from '../../src/index'
 
 Vue.config.productionTip = false
+
+Vue.use(appVue)
 
 // require all test files (files that ends with .spec.js)
 const testsContext = require.context('./specs', true, /\.spec$/)

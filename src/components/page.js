@@ -1,6 +1,4 @@
 // app-page
-// inspired by Bootstrap-Vue
-import { mergeData } from 'vue-functional-data-merge'
 
 export const props = {
   tag: {
@@ -12,14 +10,15 @@ export const props = {
 export default {
   functional: true,
   props,
-  render (h, { props, data, children }) {
+  render (h, /* { props, children } */c) {
+    const {props = {}, children = {}} = c || {} // issue of unit test
     return h(
       props.tag,
-      mergeData(data, {
+      {
         class: {
           'app-page': true
         }
-      }),
+      },
       children
     )
   }

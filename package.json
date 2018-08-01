@@ -1,5 +1,5 @@
 {
-  "name": "vue-plugin-dev-template",
+  "name": "app.vue",
   "description": "",
   "version": "0.1.2",
   "author": "+v <ljw@live.jp>",
@@ -19,9 +19,7 @@
   },
   "keywords": [],
   "dependencies": {
-    "vue": "^2.5.16",
-    "vue-functional-data-merge": "^2.0.6",
-    "vue-use": "^0.1.8"
+    "vue": "^2.5.16"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
