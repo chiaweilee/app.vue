@@ -1,6 +1,6 @@
 <template>
   <app-page>
-    <app-topbar>
+    <app-topbar theme="dark-blue">
       <app-button left>
         <span>left</span>
       </app-button>
