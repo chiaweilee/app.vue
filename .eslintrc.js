@@ -21,6 +21,7 @@ module.exports = {
   ],
   // add your custom rules here
   rules: {
+    'vue/max-attributes-per-line': 'off',
     // allow async-await
     'generator-star-spacing': 'off',
     // allow debugger during development
