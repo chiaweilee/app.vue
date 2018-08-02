@@ -5,17 +5,27 @@
 // Use box sizing on all the things!
 * {
   box-sizing: border-box;
-  -webkit-tap-highlight-color: rgba($black, 0);;
+  -webkit-tap-highlight-color: rgba($black, 0);
   -webkit-touch-callout: none;
 }
 
-html, body, div, form, p, ul, li, span, label, img {
+html,
+body,
+div,
+form,
+p,
+ul,
+li,
+span,
+label,
+img {
   margin: 0;
   padding: 0;
   outline: none;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
 }
@@ -31,11 +41,6 @@ body {
   -moz-user-select: none;
   user-select: none;
   overflow: hidden;
-}
-
-* {
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
-  tap-highlight-color: rgba(0, 0, 0, 0) !important;
 }
 
 .clear {
