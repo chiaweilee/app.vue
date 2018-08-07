@@ -3,7 +3,7 @@
 .app-topbar {
   z-index: 3000;
   position: relative;
-  height: 44px;
+  height: 4.4rem;
   width: 100%;
   background-color: $black;
   color: $white;
@@ -13,9 +13,9 @@
   .app-button {
     position: absolute;
     bottom: 0;
-    padding: 0 16px;
+    padding: 0 1.6rem;
     height: 100%;
-    line-height: 44px;
+    line-height: 4.4rem;
 
     &.left {
       left: 0;
@@ -30,7 +30,7 @@
     margin: 0 auto;
     height: 100%;
     width: 100%;
-    line-height: 44px;
+    line-height: 4.4rem;
     text-align: center;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -40,45 +40,45 @@
 
 .app-android {
   .app-topbar {
-    height: 56px;
-    -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+    height: 5.6rem;
+    -webkit-box-shadow: 0 0.1rem 0.5rem rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0.1rem 0.5rem rgba(0, 0, 0, 0.3);
 
     .app-button {
-      line-height: 56px;
+      line-height: 5.6rem;
     }
 
     .app-title {
-      line-height: 56px;
+      line-height: 5.6rem;
     }
   }
 }
 
 .app-ios-statusbar {
   .app-topbar {
-    padding-top: 20px;
+    padding-top: 2rem;
 
     .app-button {
-      height: 44px;
+      height: 4.4rem;
     }
   }
 }
 
 .app-android-statusbar {
   .app-topbar {
-    padding-top: 24px;
+    padding-top: 2.4rem;
 
     &::before {
       position: absolute;
       top: 0;
-      height: 24px;
+      height: 2.4rem;
       width: 100%;
       background-color: rgba(0, 0, 0, 0.3);
       content: "";
     }
 
     .app-button {
-      height: 56px;
+      height: 5.6rem;
     }
   }
 }
