@@ -31,7 +31,7 @@ module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
     // polyfill: 'babel-polyfill',
-    app: process.env.NODE_ENV !== 'production' ? './example/main.js' : './src/main.js'
+    app: './example/main.js'
   },
   output: {
     path: config.build.assetsRoot,
