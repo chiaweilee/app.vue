@@ -1,14 +1,16 @@
 import Vue from 'vue'
-import VueRouter from './config/vue-router'
 import use from 'vue-use'
 import App from './App.vue'
 import appVue from '../src/index'
+import VueRouter from './config/vue-router'
+import components from './config/vue/components'
 import '../src/scss/app.scss'
 import './App.scss'
 
 Vue.config.productionTip = false
 
 const { router } = use(Vue, {
+  components,
   VueRouter
 })
 

@@ -1,4 +1,4 @@
-import { default as variables, reg2string } from '@/config/_variables'
+import { default as variables, reg2string } from '@/config/variables'
 
 export default [
   {
@@ -10,19 +10,11 @@ export default [
     }
   },
   {
-    path: '/++:key(' + reg2string(variables.key) + ')',
-    name: '#',
-    meta: {},
-    components: {
-      default: r => require.ensure([], () => r(require('@/components/#.vue')), '#')
-    }
-  },
-  {
     path: '/@:at(' + reg2string(variables.at) + ')',
     name: '@',
     meta: {},
     components: {
-      default: r => require.ensure([], () => r(require('@/components/@.vue')), '@')
+      default: r => require.ensure([], () => r(require('@/components/sociality/@.vue')), '@')
     }
   },
   {

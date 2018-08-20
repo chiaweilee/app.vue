@@ -4,14 +4,6 @@ const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
 
-vueLoaderConfig.loaders['i18n'] = [{
-  loader: 'vue-i18n-fileoutputer',
-  options: {
-    dir: 'src/i18n',
-    prod: process.env.NODE_ENV === 'production'
-  }
-}]
-
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }

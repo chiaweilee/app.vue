@@ -7,7 +7,10 @@
       <app-button right disabled>
         <span>right</span>
       </app-button>
-      <app-title>Hello world</app-title>
+      <app-title>
+        Hello world
+        <at :@="'chongqing'"/>
+      </app-title>
     </app-topbar>
   </app-page>
 </template>
