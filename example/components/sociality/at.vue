@@ -3,6 +3,7 @@
 </template>
 
 <script>
+import isEqual from 'lodash/fp/isEqual'
 export default {
   computed: {
     at () {
@@ -13,6 +14,17 @@ export default {
     '@': {
       type: String,
       required: true
+    }
+  },
+  beforeDestroy () {
+    this.will()
+  },
+  methods: {
+    will () {
+      const to = this.$route
+      if (isEqual(to.name)('@') && isEqual(to.params)({at: this.at})) {
+        console.log(`@${this.at}`)
+      }
     }
   }
 }
