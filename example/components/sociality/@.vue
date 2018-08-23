@@ -1,5 +1,11 @@
 <template>
-  <div>@{{ at }}</div>
+  <app-page>
+    <app-topbar theme="dark-blue">
+      <app-title>
+        @{{ at }}
+      </app-title>
+    </app-topbar>
+  </app-page>
 </template>
 
 <script>
