@@ -5,7 +5,7 @@ import appVue from '../src/index'
 import VueRouter from './config/vue-router'
 import components from './config/vue/components'
 import '../src/scss/app.scss'
-import './App.scss'
+import './scss/app.scss'
 
 Vue.config.productionTip = false
 
