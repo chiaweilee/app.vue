@@ -1,4 +1,4 @@
-/**
+/*!
  * app-vue v0.1.2
  * (c) 2018 +v
  * @license MIT
