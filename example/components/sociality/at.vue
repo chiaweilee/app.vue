@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import isEqual from 'lodash/fp/isEqual'
+const isEqual = a => b => a === b
 export default {
   computed: {
     at () {
