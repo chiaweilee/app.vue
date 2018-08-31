@@ -1,6 +1,6 @@
 module.exports = {
   processors: ['stylelint-processor-html'],
-  extends: ['stylelint-config-standard'],
+  extends: ['stylelint-config-recommended'],
   plugins: ['stylelint-order'],
   rules: {
     // "color-hex-case": "lower",
