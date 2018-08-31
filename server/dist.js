@@ -1,5 +1,7 @@
+const compression = require('compression')
 const path = require('path')
 const app = require('express')()
+app.use(compression())
 const http = require('http').Server(app)
 const fs = require('fs')
 const httpPort = 80
