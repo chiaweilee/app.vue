@@ -22,5 +22,5 @@ new Vue({
   router,
   render: h => h(App),
   template: '<App/>',
-  components: {App}
+  components: { App }
 })

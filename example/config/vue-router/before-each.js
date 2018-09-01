@@ -6,7 +6,7 @@ export default function (to, from, next/* , store *//* vue-use extend */) {
   if (to.path === '/' && new RegExp('^#' + reg2string(variables.key) + '$').test(to.hash)) {
     const key = to.hash.replace(/^#(.+)/, '$1')
     if (key) {
-      next({name: '#', params: {key}})
+      next({ name: '#', params: { key } })
       return
     }
   }
