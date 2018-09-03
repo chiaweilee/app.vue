@@ -20,6 +20,7 @@
   },
   "keywords": [],
   "dependencies": {
+    "lodash": "^4.17.10",
     "vue": "^2.5.17"
   },
   "devDependencies": {

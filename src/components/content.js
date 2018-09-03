@@ -9,11 +9,10 @@ export default {
   functional: true,
   props,
   render (h, /* { props, children } */c) {
-    const { props = {}, children = {}, data = {} } = c || {} // issue of unit test
+    const { props = {}, children = {} } = c || {} // issue of unit test
     return h(
       props.tag,
       {
-        ref: data.ref,
         class: {
           'app-content': true
         }

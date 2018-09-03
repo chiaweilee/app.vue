@@ -8,13 +8,19 @@
         @{{ at }}
       </app-title>
     </app-topbar>
-    <app-content ref="target"/>
+    <app-content>
+      <component v-if="!!compo" :is="compo"/>
+    </app-content>
   </app-page>
 </template>
 
 <script>
-import Vue from 'vue'
 export default {
+  data () {
+    return {
+      compo: null
+    }
+  },
   created () {
     this.mount()
   },
@@ -25,12 +31,7 @@ export default {
   },
   methods: {
     mount () {
-      import(`./extend/${this.at}.vue`)
-        .then(c => {
-          const Component = Vue.extend(c.default)
-          const content = new Component().$mount()
-          this.$refs.target.appendChild(content.$el)
-        })
+      this.compo = () => import(`./extend/${this.at}`)
     }
   }
 }
