@@ -8,7 +8,7 @@
         @{{ at }}
       </app-title>
     </app-topbar>
-    <div ref="target"/>
+    <app-content ref="target"/>
   </app-page>
 </template>
 
@@ -28,7 +28,8 @@ export default {
       import(`./extend/${this.at}.vue`)
         .then(c => {
           const Component = Vue.extend(c.default)
-          new Component().$mount(this.$refs.target)
+          const content = new Component().$mount()
+          this.$refs.target.appendChild(content.$el)
         })
     }
   }
