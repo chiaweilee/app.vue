@@ -1,11 +1,14 @@
 <template>
   <app-page>
     <app-topbar theme="dark-blue">
+      <app-button left history-back>
+        <span>back</span>
+      </app-button>
       <app-title>
         @{{ at }}
       </app-title>
     </app-topbar>
-    <div ref="target"></div>
+    <div ref="target"/>
   </app-page>
 </template>
 
