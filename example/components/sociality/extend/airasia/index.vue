@@ -1,10 +1,12 @@
 <template>
   <div>
     <dl v-for="(price, name) in best" :key="name">
-      <dt v-text="name"/>
+      <dt>
+        <b>{{ name }} {{ sample(price) }}</b>
+      </dt>
       <dd>
-        <dl v-for="(_, date) in price" :key="date">
-          {{ date }} {{ _ }}
+        <dl v-for="_ in sortBy(map(price, function (v, _) { return _ }), 'desc')" :key="_">
+          {{ _ }}
         </dl>
       </dd>
     </dl>
@@ -12,8 +14,10 @@
 </template>
 
 <script>
+import sample from 'lodash/sample'
 import min from 'lodash/min'
 import map from 'lodash/map'
+import sortBy from 'lodash/sortBy'
 import forEach from 'lodash/forEach'
 import merge from 'lodash/merge'
 import api from './api'
@@ -34,6 +38,9 @@ export default {
     this.init()
   },
   methods: {
+    map,
+    sortBy,
+    sample,
     filtrate () {
       this.best = {} // clear
       forEach(this.prices, (p, k) => {
@@ -65,3 +72,16 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  dl,
+  dt,
+  dd {
+    padding: 0;
+    margin: 0;
+  }
+
+  dl {
+    display: inline;
+  }
+</style>
