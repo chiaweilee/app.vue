@@ -31,7 +31,7 @@ export default {
       best: null,
       prices: null,
       routes,
-      dates: getDate(24)
+      dates: getDate(18)
     }
   },
   created () {
@@ -51,6 +51,11 @@ export default {
       })
     },
     init () {
+      const cache = sessionStorage.getItem('airasia')
+      if (cache) {
+        this.prices = JSON.parse(cache)
+        return
+      }
       this.dates.forEach(d => {
         this.routes.forEach(r => {
           const [currency, departure, destination] = r
@@ -60,6 +65,7 @@ export default {
             .then(data => {
               if (data) {
                 this.$set(this, 'prices', merge(this.prices, data))
+                sessionStorage.setItem('airasia', JSON.stringify(this.prices))
                 this.$nextTick(() => this.filtrate())
               }
             })

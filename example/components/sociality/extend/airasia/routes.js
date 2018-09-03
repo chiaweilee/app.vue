@@ -1,4 +1,7 @@
 export default [
   /* [currency, departure, destination] */
-  ['cny', 'dmk', 'mle']
+  ['cny', 'dmk', 'ckg'],
+  ['cny', 'kul', 'ckg'],
+  ['cny', 'dmk', 'mle'],
+  ['cny', 'kul', 'mle']
 ]
