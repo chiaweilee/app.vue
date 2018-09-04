@@ -19,6 +19,11 @@ export default {
       return this.$store.state.cache.tickers
     }
   },
+  beforeCreate () {
+    this.$nextTick(function () {
+      this.$emit('theme', 'red')
+    })
+  },
   created () {
     this.init()
   },

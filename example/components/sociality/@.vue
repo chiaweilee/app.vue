@@ -1,6 +1,6 @@
 <template>
   <app-page>
-    <app-topbar theme="dark-blue">
+    <app-topbar :theme="theme || 'dark-blue'">
       <app-button left history-back>
         <span>back</span>
       </app-button>
@@ -9,7 +9,7 @@
       </app-title>
     </app-topbar>
     <app-content>
-      <component v-if="!!compo" :is="compo"/>
+      <component v-if="!!compo" :is="compo" @theme="setTheme"/>
     </app-content>
   </app-page>
 </template>
@@ -18,6 +18,7 @@
 export default {
   data () {
     return {
+      theme: null,
       compo: null
     }
   },
@@ -30,6 +31,9 @@ export default {
     }
   },
   methods: {
+    setTheme (to) {
+      this.theme = to
+    },
     mount () {
       this.compo = () => import(`./extend/${this.at}`)
     }
