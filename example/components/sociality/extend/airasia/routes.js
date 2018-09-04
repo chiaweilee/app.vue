@@ -1,4 +1,4 @@
-export default [
+module.exports = [
   /* [currency, departure, destination] */
   ['cny', 'dmk', 'ckg'],
   ['cny', 'kul', 'ckg'],

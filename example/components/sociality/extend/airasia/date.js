@@ -1,9 +1,7 @@
-import map from 'lodash/map'
-
-export default target => {
+module.exports = target => {
   const now = new Date()
   const month = now.getMonth()
-  return map(new Array(target), (d, i) => {
+  return require('lodash/map')(new Array(target), (d, i) => {
     const countMonth = (month + i + 1)
     const targetMonth = countMonth % 12
     const targetYear = now.getFullYear() + Math.floor(countMonth / 12)

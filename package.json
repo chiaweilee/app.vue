@@ -21,7 +21,8 @@
   "keywords": [],
   "dependencies": {
     "lodash": "^4.17.10",
-    "vue": "^2.5.17"
+    "vue": "^2.5.17",
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^9.1.1",
