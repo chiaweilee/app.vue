@@ -38,16 +38,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-  dl,
-  dt,
-  dd {
-    padding: 0;
-    margin: 0;
-  }
-
-  dl {
-    display: inline;
-  }
-</style>
