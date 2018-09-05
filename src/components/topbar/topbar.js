@@ -1,12 +1,13 @@
 // <app-topbar/>
-import { tag } from '../_props'
+import { staticProp, tag } from '../_props'
 
 export const props = {
   tag,
   theme: {
     type: String,
     default: ''
-  }
+  },
+  transition: staticProp
 }
 
 export default {
@@ -19,6 +20,7 @@ export default {
       {
         class: {
           'app-topbar': true,
+          'transition': props.transition,
           [props.theme]: !!props.theme
         }
       },

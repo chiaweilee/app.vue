@@ -1,6 +1,6 @@
 <template>
   <app-page>
-    <app-topbar :theme="theme || 'dark-blue'">
+    <app-topbar :theme="theme || 'dark-blue'" transition>
       <app-button left history-back>
         <span>back</span>
       </app-button>
