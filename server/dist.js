@@ -4,7 +4,10 @@ const app = require('express')()
 app.use(compression())
 const http = require('http').Server(app)
 const fs = require('fs')
-const httpPort = 80
+const createHandler = require('github-webhook-handler')
+const cmd = require('node-cmd')
+const handler = createHandler({path: '/', secret: '7d38cdd689735b008b3c702edd92eea23791c5f6'})
+const httpPort = 8088
 const defaultPath = './dist/'
 const defaultPage = 'index.html'
 
@@ -23,6 +26,22 @@ const mimeType = {
   'txt': ['text/plain', 'utf8'],
   'xml': ['text/xml', 'utf8']
 }
+
+handler.on('error', function (err) {
+  console.error('Error:', err.message)
+})
+
+handler.on('push', function () {
+  cmd.run('git pull')
+})
+
+app.post('/', function (request, response) {
+  // eslint-disable-next-line
+  handler(request, response, function (err) {
+    response.statusCode = 404
+    response.end('no such location')
+  })
+})
 
 app.get('*', function (request, response) {
   const url = request.originalUrl !== '/' ? request.originalUrl : `/${defaultPage}`
