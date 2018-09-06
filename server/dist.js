@@ -7,7 +7,7 @@ const fs = require('fs')
 const createHandler = require('github-webhook-handler')
 const cmd = require('node-cmd')
 const handler = createHandler({path: '/', secret: '7d38cdd689735b008b3c702edd92eea23791c5f6'})
-const httpPort = 8088
+const httpPort = 80
 const defaultPath = './dist/'
 const defaultPage = 'index.html'
 
