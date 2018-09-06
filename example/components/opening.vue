@@ -15,14 +15,18 @@
 </template>
 
 <style scoped lang="scss">
-  @import url(https://fonts.googleapis.com/css?family=Lato);
-
   $main-color: black;
   $duration: 1s;
-  $dot-duration: 2s;
-  $delay: 0.5s;
-  $ease: cubic-bezier(1, 0.01, 0.76, .8);
-  $function: infinite;
+  $dot-duration: 3s;
+  $delay: 1s;
+  $ease: cubic-bezier(.1,0,1,.32);
+  $function: forwards;
+
+  .opening {
+    margin: 0;
+    color: $main-color;
+    font-size: 1.4em;
+  }
 
   .opening {
     display: flex;
@@ -32,15 +36,16 @@
   div {
     position: relative;
     display: flex;
-    padding: 0 0.1em;
+    padding: 0 0.185rem;
     overflow: hidden;
 
     &:nth-child(1) > .inner {
-      padding-right: 0.2em;
+      padding-right: 0.2rem;
       animation: left $duration $ease $delay $function;
     }
 
     &:nth-child(2) > .inner {
+      margin-right: 0.2rem;
       animation: right $duration $ease $delay $function;
     }
 
@@ -58,7 +63,7 @@
     height: 3px;
     background-color: $main-color;
     border-radius: 50%;
-    animation: right $duration $ease $delay $function;
+    animation: dot 1.5 * $duration $ease $delay $function;
   }
 
   @keyframes left {
@@ -87,13 +92,19 @@
 
   @keyframes dot {
     0% {
-      transform: translateX(0) translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
     }
-    50% {
-      transform: translateX(-100%) translate3d(-100%, 0, 0);
+    66% {
+      transform: translate3d(-3rem, 0, 0);
+    }
+    80% {
+      transform: translate3d(-2rem, -1rem, 0);
+    }
+    99% {
+      transform: translate3d(-1rem, 0, 0);
     }
     100% {
-      /* transform: matrix(1, 0, 0, 1, -105, 0); */
+      transform: matrix(1, 0, 0, 1, -14, 0);
     }
   }
 </style>
