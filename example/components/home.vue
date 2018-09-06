@@ -11,10 +11,13 @@
         Dear Red
       </app-title>
     </app-topbar>
-    <dl>
-      <dd>
-        <at :@="'airasia'"/>
-      </dd>
-    </dl>
+    <app-content>
+      <opening/>
+      <dl>
+        <dd>
+          <at :@="'airasia'"/>
+        </dd>
+      </dl>
+    </app-content>
   </app-page>
 </template>
