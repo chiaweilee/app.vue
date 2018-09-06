@@ -32,7 +32,6 @@ handler.on('error', function (err) {
 })
 
 handler.on('push', function () {
-  console.log('git updating')
   cmd.run('git pull')
 })
 

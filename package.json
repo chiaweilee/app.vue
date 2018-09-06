@@ -16,7 +16,7 @@
     "build": "node build/build.js",
     "release": "cross-env NODE_ENV=production webpack --config ./build/webpack.release.js --progress --hide-modules",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
-    "server": "node server/dist.js"
+    "server": "supervisor server/dist.js"
   },
   "keywords": [],
   "dependencies": {
