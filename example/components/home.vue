@@ -12,7 +12,7 @@
       </app-title>
     </app-topbar>
     <app-content>
-      <opening/>
+      <opening v-if="opening" @end="close"/>
       <dl>
         <dd>
           <at :@="'airasia'"/>
@@ -21,3 +21,18 @@
     </app-content>
   </app-page>
 </template>
+
+<script>
+export default {
+  data () {
+    return {
+      opening: true
+    }
+  },
+  methods: {
+    close () {
+      this.opening = false
+    }
+  }
+}
+</script>

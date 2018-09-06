@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1.0">
+  <meta name=renderer content=webkit>
+  <meta name=force-rendering content=webkit>
+  <meta http-equiv=X-UA-Compatible content="IE=Edge, chrome=1">
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Lato);
+
+    body {
+      margin: 0;
+      color: black;
+      font-family: 'Lato', sans-serif;
+      font-size: 1.4em;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .sentance {
+      display: flex;
+      line-height: 1;
+    }
+
+    .sentance__half {
+      position: relative;
+      display: flex;
+      padding: 0 0.1em;
+      overflow: hidden;
+    }
+
+    .sentance__half.right {
+      padding-right: 0.2em;
+    }
+
+    .sentance__half > .inner {
+      display: inline-block;
+    }
+
+    .dot {
+      position: absolute;
+      bottom: 3px;
+      right: 0;
+      display: block;
+      width: 3px;
+      height: 3px;
+      background-color: black;
+      border-radius: 50%;
+    }
+
+    .info {
+      position: absolute;
+      top: 20px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      color: black;
+      font-family: monospace;
+      font-size: 0.8em;
+      opacity: 0.2;
+    }
+
+  </style>
+</head>
+<body>
+<div id="app">
+  <div class="sentance">
+    <div class="sentance__half left">
+    <span class="inner">
+      It all starts
+    </span>
+    </div>
+    <div class="sentance__half right">
+    <span class="inner">
+      with an idea
+    </span>
+      <span class="dot"></span>
+    </div>
+  </div>
+
+  <div class="info">Hit space to restart</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.4/TweenMax.min.js"></script>
+<script>
+  var $left = document.querySelector('.sentance__half.left .inner')
+  var $right = document.querySelector('.sentance__half.right .inner')
+  var $dot = document.querySelector('.dot')
+  var rightW = $right.offsetWidth
+  var mainDuration = 1.2
+
+  var tl = new TimelineLite({delay: 1, paused: false})
+
+  tl
+    .to($left, mainDuration, {xPercent: 101, ease: Expo.easeIn})
+    .to($right, mainDuration, {xPercent: -101, ease: Expo.easeIn}, '-=' + mainDuration)
+    .to($dot, mainDuration, {x: -rightW, ease: Expo.easeIn}, '-=' + mainDuration)
+    .to($dot, 0.2, {y: -16})
+    .to($dot, 0.6, {y: 0, ease: Bounce.easeOut})
+    .to($dot, 1, {x: -rightW + 15}, '-=0.8')
+
+</script>
+</body>
+</html>

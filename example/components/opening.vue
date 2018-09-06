@@ -1,110 +1,114 @@
 <template>
   <div class="opening">
-    <div>
-      <span class="inner">
-        Dear
-      </span>
-    </div>
-    <div>
-      <span class="inner">
-        red
-      </span>
-      <span class="dot"/>
+    <div class="scene">
+      <div>
+        <span ref="left">
+          Dear
+        </span>
+      </div>
+      <div>
+        <span ref="right">
+          red
+        </span>
+        <span class="dot" ref="dot"/>
+      </div>
     </div>
   </div>
 </template>
 
+<script>
+// Inspire by https://codepen.io/maximebonhomme/pen/WxkJRk
+
+import { TimelineLite } from 'gsap/TweenMax'
+import { Bounce, Expo } from 'gsap/EasePack'
+
+export default {
+  data () {
+    return {
+      delay: 1,
+      duration: 1.2,
+      stay: 1
+    }
+  },
+  mounted () {
+    this.start()
+  },
+  methods: {
+    end () {
+      this.$emit('end')
+    },
+    start () {
+      const $left = this.$refs.left
+      const $right = this.$refs.right
+      const $dot = this.$refs.dot
+      const rightW = $right.offsetWidth
+      const mainDuration = this.duration
+      const tl = new TimelineLite({delay: this.delay, paused: false})
+      const timeout = (this.duration + this.delay + this.stay) * 1000
+      tl
+        .to($left, mainDuration, {xPercent: 101, ease: Expo.easeIn})
+        .to($right, mainDuration, {xPercent: -101, ease: Expo.easeIn}, '-=' + mainDuration)
+        .to($dot, mainDuration, {x: -rightW, ease: Expo.easeIn}, '-=' + mainDuration)
+        .to($dot, 0.2, {y: -16})
+        .to($dot, 0.6, {y: 0, ease: Bounce.easeOut})
+        .to($dot, 1, {x: -rightW + 15}, '-=0.8')
+      setTimeout(this.end, timeout)
+    }
+  }
+}
+</script>
+
 <style scoped lang="scss">
-  $main-color: black;
-  $duration: 1s;
-  $dot-duration: 3s;
-  $delay: 1s;
-  $ease: cubic-bezier(.1,0,1,.32);
-  $function: forwards;
+  $background-color: #fff;
+  $main-color: #000;
+  $font-size: 2rem;
+  $dot-size: 0.15 * $font-size;
+  $dot-color: #f03;
 
   .opening {
-    margin: 0;
-    color: $main-color;
-    font-size: 1.4em;
-  }
-
-  .opening {
-    display: flex;
-    line-height: 1;
-  }
-
-  div {
-    position: relative;
-    display: flex;
-    padding: 0 0.185rem;
-    overflow: hidden;
-
-    &:nth-child(1) > .inner {
-      padding-right: 0.2rem;
-      animation: left $duration $ease $delay $function;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: $background-color;
+    z-index: 2147483647;
+    .scene {
+      margin: 0;
+      color: $main-color;
+      font-size: $font-size;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      line-height: 1;
     }
 
-    &:nth-child(2) > .inner {
-      margin-right: 0.2rem;
-      animation: right $duration $ease $delay $function;
+    div {
+      position: relative;
+      display: flex;
+      padding: 0 $font-size / 10;
+      overflow: hidden;
+
+      &:nth-child(2) {
+        padding-right: $font-size * 0.22;
+      }
+
+      & > span:not(.dot) {
+        display: inline-block;
+      }
     }
 
-    & > .inner {
-      display: inline-block;
-    }
-  }
-
-  .dot {
-    position: absolute;
-    bottom: 3px;
-    right: 0;
-    display: block;
-    width: 3px;
-    height: 3px;
-    background-color: $main-color;
-    border-radius: 50%;
-    animation: dot 1.5 * $duration $ease $delay $function;
-  }
-
-  @keyframes left {
-    0% {
-      transform: translateX(0%) translate3d(0, 0, 0);
-    }
-    99% {
-      transform: translateX(100%) translate3d(0, 0, 0);
-    }
-    100% {
-      transform: translateX(101%) matrix(1, 0, 0, 1, 0, 0);
-    }
-  }
-
-  @keyframes right {
-    0% {
-      transform: translateX(0%) translate3d(0, 0, 0);
-    }
-    99% {
-      transform: translateX(-100%) translate3d(0, 0, 0);
-    }
-    100% {
-      transform: translateX(-101%) matrix(1, 0, 0, 1, 0, 0);
-    }
-  }
-
-  @keyframes dot {
-    0% {
-      transform: translate3d(0, 0, 0);
-    }
-    66% {
-      transform: translate3d(-3rem, 0, 0);
-    }
-    80% {
-      transform: translate3d(-2rem, -1rem, 0);
-    }
-    99% {
-      transform: translate3d(-1rem, 0, 0);
-    }
-    100% {
-      transform: matrix(1, 0, 0, 1, -14, 0);
+    .dot {
+      position: absolute;
+      bottom: $dot-size;
+      right: 0;
+      display: block;
+      width: $dot-size;
+      height: $dot-size;
+      background-color: $dot-color;
+      border-radius: 50%;
+      font-size: 0;
     }
   }
 </style>
