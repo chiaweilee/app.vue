@@ -6,25 +6,25 @@ const http = require('http').Server(app)
 const fs = require('fs')
 const createHandler = require('github-webhook-handler')
 const cmd = require('node-cmd')
-const handler = createHandler({path: '/', secret: '7d38cdd689735b008b3c702edd92eea23791c5f6'})
+const handler = createHandler({ path: '/', secret: '7d38cdd689735b008b3c702edd92eea23791c5f6' })
 const httpPort = 80
 const defaultPath = './dist/'
 const defaultPage = 'index.html'
 
 const mimeType = {
-  'css': ['text/css', 'utf8'],
-  'gif': ['image/gif', 'binary'],
-  'html': ['text/html', 'utf8'],
-  'ico': ['image/x-icon', 'binary'],
-  'jpeg': ['image/jpeg', 'binary'],
-  'jpg': ['image/jpeg', 'binary'],
-  'js': ['text/javascript', 'utf8'],
-  'json': ['application/json', 'utf8'],
-  'png': ['image/png', 'binary'],
-  'svg': ['image/svg+xml', 'binary'],
-  'tiff': ['image/tiff', 'binary'],
-  'txt': ['text/plain', 'utf8'],
-  'xml': ['text/xml', 'utf8']
+  'css': ['text/css', 'utf8', 'max-age=31536000'],
+  'gif': ['image/gif', 'binary', 'max-age=86400'],
+  'html': ['text/html', 'utf8', 'no-cache'],
+  'ico': ['image/x-icon', 'binary', 'max-age=86400'],
+  'jpeg': ['image/jpeg', 'binary', 'max-age=86400'],
+  'jpg': ['image/jpeg', 'binary', 'max-age=86400'],
+  'js': ['text/javascript', 'utf8', 'private, max-age=31536000'],
+  'json': ['application/json', 'utf8', 'private, max-age=31536000'],
+  'png': ['image/png', 'binary', 'max-age=86400'],
+  'svg': ['image/svg+xml', 'binary', 'max-age=86400'],
+  'tiff': ['image/tiff', 'binary', 'max-age=86400'],
+  'txt': ['text/plain', 'utf8', 'max-age=86400'],
+  'xml': ['text/xml', 'utf8', 'max-age=86400']
 }
 
 handler.on('error', function (err) {
@@ -56,7 +56,7 @@ app.get('*', function (request, response) {
               response.send(err)
               return
             }
-            response.writeHead(200, {'content-type': 'text/html'})
+            response.writeHead(200, { 'content-type': 'text/html' })
             response.write(data, 'utf8')
             response.end()
           })
@@ -65,7 +65,10 @@ app.get('*', function (request, response) {
         response.send(err)
         return
       }
-      response.writeHead(200, {'content-type': mimeType[ext][0] || 'text/plain'})
+      response.writeHead(200, {
+        'Cache-Control': mimeType[ext][2] || 'no-cache',
+        'content-type': mimeType[ext][0] || 'text/plain'
+      })
       response.write(data, mimeType[ext][1])
       response.end()
     })
