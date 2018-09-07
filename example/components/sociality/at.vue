@@ -22,7 +22,7 @@ export default {
   methods: {
     will () {
       const to = this.$route
-      if (isEqual(to.name)('@') && isEqual(to.params)({at: this.at})) {
+      if (isEqual(to.name)('@') && isEqual(to.params)({ at: this.at })) {
         console.log(`@${this.at}`)
       }
     }

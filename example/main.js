@@ -11,7 +11,7 @@ import './scss/app.scss'
 
 Vue.config.productionTip = false
 
-const {store, router} = use(Vue, {
+const { store, router } = use(Vue, {
   filters,
   components,
   VueRouter,
@@ -33,5 +33,5 @@ new Vue({
   render: h => h(App),
   store,
   template: '<App/>',
-  components: {App}
+  components: { App }
 })

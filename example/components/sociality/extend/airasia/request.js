@@ -2,7 +2,7 @@ const routes = require('./routes')
 const api = require('./api')
 const forEach = require('lodash/forEach')
 
-module.exports = function ({commit}, {progress}) {
+module.exports = function ({ commit }, { progress }) {
   if (sessionStorage) {
     const cache = sessionStorage.getItem('aa')
     if (cache) {
