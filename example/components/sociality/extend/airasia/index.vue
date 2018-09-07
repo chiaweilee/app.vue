@@ -8,6 +8,7 @@
 </template>
 
 <script>
+const name = require('./name')
 export default {
   data () {
     return {
@@ -16,7 +17,7 @@ export default {
   },
   computed: {
     tickers () {
-      return this.$store.state.cache.tickers
+      return this.$store.state.cache[name]
     }
   },
   beforeCreate () {
@@ -29,7 +30,7 @@ export default {
   },
   methods: {
     init () {
-      this.$store.dispatch('aa', {
+      this.$store.dispatch(`$${name}`, {
         progress: (finish, all) => {
           this.loading = finish / all
         }

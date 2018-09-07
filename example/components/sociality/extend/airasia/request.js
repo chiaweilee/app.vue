@@ -1,13 +1,14 @@
 const routes = require('./routes')
 const api = require('./api')
 const forEach = require('lodash/forEach')
+const name = require('./name')
 
 module.exports = function ({ commit }, { progress }) {
   if (sessionStorage) {
-    const cache = sessionStorage.getItem('aa')
+    const cache = sessionStorage.getItem(name)
     if (cache) {
       if (typeof progress === 'function') progress(1, 1)
-      commit('_aa', JSON.parse(cache))
+      commit('_' + name, JSON.parse(cache))
       return
     }
   }
@@ -29,7 +30,7 @@ module.exports = function ({ commit }, { progress }) {
         }
       })
     })
-    commit('_aa', result)
+    commit('_' + name, result)
   }
   // create jobs
   routes.forEach(r => {
