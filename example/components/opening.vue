@@ -19,7 +19,8 @@
 <script>
 // Inspire by https://codepen.io/maximebonhomme/pen/WxkJRk
 
-import { TimelineLite } from 'gsap/TweenMax'
+import 'gsap/CSSPlugin.js'
+import TimelineLite from 'gsap/TimelineLite.js'
 import { Bounce, Expo } from 'gsap/EasePack'
 
 export default {
@@ -43,15 +44,15 @@ export default {
       const $dot = this.$refs.dot
       const rightW = $right.offsetWidth
       const mainDuration = this.duration
-      const tl = new TimelineLite({ delay: this.delay, paused: false })
+      const tl = new TimelineLite({delay: this.delay, paused: false})
       const timeout = (this.duration + this.delay + this.stay) * 1000
       tl
-        .to($left, mainDuration, { xPercent: 101, ease: Expo.easeIn })
-        .to($right, mainDuration, { xPercent: -101, ease: Expo.easeIn }, '-=' + mainDuration)
-        .to($dot, mainDuration, { x: -rightW, ease: Expo.easeIn }, '-=' + mainDuration)
-        .to($dot, 0.2, { y: -16 })
-        .to($dot, 0.6, { y: 0, ease: Bounce.easeOut })
-        .to($dot, 1, { x: -rightW + 15 }, '-=0.8')
+        .to($left, mainDuration, {xPercent: 101, ease: Expo.easeIn})
+        .to($right, mainDuration, {xPercent: -101, ease: Expo.easeIn}, '-=' + mainDuration)
+        .to($dot, mainDuration, {x: -rightW, ease: Expo.easeIn}, '-=' + mainDuration)
+        .to($dot, 0.2, {y: -16})
+        .to($dot, 0.6, {y: 0, ease: Bounce.easeOut})
+        .to($dot, 1, {x: -rightW + 15}, '-=0.8')
       setTimeout(this.end, timeout)
     }
   }
