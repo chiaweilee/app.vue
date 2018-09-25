@@ -13,7 +13,7 @@ describe('page.js', () => {
   it('should render correct contents', () => {
     const Constructor = Vue.extend({ template: `<app-button tag="${test.tagName}" ${test.right} ${test.left} ${test.disabled}>${test.text}</app-button>` })
     const vm = new Constructor().$mount()
-    expect(vm.$el.tagName).to.equal(test.tagName)
+    expect(vm.$el.tagName).to.equal(test.tagName.toUpperCase())
     const _className = vm.$el.className.split(' ')
     expect(_className).to.include(test.className)
     !!test.right && expect(_className).to.include(test.right)
