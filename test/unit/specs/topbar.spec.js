@@ -9,7 +9,7 @@ const test = {
 
 describe('page.js', () => {
   it('should render correct contents', () => {
-    const Constructor = Vue.extend({template: `<app-topbar tag="${test.tagName}" theme="${test.theme}">${test.text}</app-topbar>`})
+    const Constructor = Vue.extend({ template: `<app-topbar tag="${test.tagName}" theme="${test.theme}">${test.text}</app-topbar>` })
     const vm = new Constructor().$mount()
     expect(vm.$el.tagName).to.equal(test.tagName)
     const _className = vm.$el.className.split([' '])
