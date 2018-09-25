@@ -1,4 +1,4 @@
-import { default as variables, reg2string } from '@/config/variables'
+import variables, { reg2string } from '@/config/variables'
 
 export default function (to, from, next/* , store *//* vue-use extend */) {
   // listen #key
