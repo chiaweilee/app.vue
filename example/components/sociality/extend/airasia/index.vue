@@ -3,7 +3,16 @@
     loading {{ loading | percent }}
   </div>
   <div v-else>
-    {{ tickers }}
+    <ul>
+      <li v-for="route in Object.keys(tickers)" :key="route">
+        <dl>
+          <dt>{{ route }} {{ getPrice(route) }}</dt>
+          <dd v-for="(price, date) in tickers[route]" :key="date">
+            {{ date }}
+          </dd>
+        </dl>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -35,6 +44,9 @@ export default {
           this.loading = finish / all
         }
       })
+    },
+    getPrice (route) {
+      return this.tickers[route][Object.keys(this.tickers[route])[0]]
     }
   }
 }
