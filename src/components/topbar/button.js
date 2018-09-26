@@ -15,7 +15,9 @@ export default {
   props,
   render (h, /* { props, children } */c) {
     const { props = {}, children = {} } = c || {} // issue of unit test
-    if (props.historyBack) on['click'] = () => { window.history.back() }
+    if (!props.disabled) {
+      if (props.historyBack) on['click'] = () => { window.history.back() }
+    }
     return h(
       props.tag,
       {
