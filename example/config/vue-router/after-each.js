@@ -1,3 +1,1 @@
-export default function (to, from) {
-  console.log(to)
-}
+export default function (to, from) {}

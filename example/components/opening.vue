@@ -48,8 +48,8 @@ export default {
       const timeout = (this.duration + this.delay + this.stay) * 1000
       tl
         .to($left, mainDuration, { xPercent: 101, ease: Expo.easeIn })
-        .to($right, mainDuration, { xPercent: -101, ease: Expo.easeIn }, '-=' + mainDuration)
-        .to($dot, mainDuration, { x: -rightW, ease: Expo.easeIn }, '-=' + mainDuration)
+        .to($right, mainDuration, { xPercent: -101, ease: Expo.easeIn }, `-=${mainDuration}`)
+        .to($dot, mainDuration, { x: -rightW, ease: Expo.easeIn }, `-=${mainDuration}`)
         .to($dot, 0.2, { y: -16 })
         .to($dot, 0.6, { y: 0, ease: Bounce.easeOut })
         .to($dot, 1, { x: -rightW + 15 }, '-=0.8')
