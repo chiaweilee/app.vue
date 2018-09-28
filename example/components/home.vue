@@ -16,6 +16,7 @@
       <dl>
         <dd>
           <at :@="'airasia'"/>
+          <snake auto-start/>
         </dd>
       </dl>
     </app-content>
@@ -24,6 +25,9 @@
 
 <script>
 export default {
+  components: {
+    snake: () => import('./snake.vue')
+  },
   data () {
     return {
       opening: true
