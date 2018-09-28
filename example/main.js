@@ -1,10 +1,9 @@
 import Vue from 'vue'
-import Vuex from 'vuex'
 import use from 'vue-use'
 import App from './App.vue'
 import appVue from '../src/index'
 import VueRouter from './config/vue-router'
-import { modules } from './config/vuex'
+import Vuex from './config/vuex'
 import { filters, components } from './config/vue'
 import '../src/scss/app.scss'
 import './scss/app.scss'
@@ -15,13 +14,7 @@ const { store, router } = use(Vue, {
   filters,
   components,
   VueRouter,
-  Vuex: {
-    Vuex,
-    Store: {
-      modules,
-      strict: process.env.NODE_ENV !== 'production'
-    }
-  }
+  Vuex
 })
 
 Vue.use(appVue)
