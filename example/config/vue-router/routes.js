@@ -1,4 +1,4 @@
-import variables, { reg2string } from '@/config/variables'
+import reg from '@/config/reg'
 
 export default [
   {
@@ -10,7 +10,7 @@ export default [
     }
   },
   {
-    path: '/@:at(' + reg2string(variables.at) + ')',
+    path: '/@:at(' + reg.at.string + ')',
     name: '@',
     meta: {},
     components: {
