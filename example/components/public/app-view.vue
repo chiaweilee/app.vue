@@ -1,11 +1,22 @@
 <template>
-  <transition :name="$store.getters.transition">
+  <opening v-if="!hot" @end="hot = true"/>
+  <transition :name="$store.getters.transition" v-else>
     <keep-alive v-if="$route.meta.keepAlive">
       <router-view class="app transition"/>
     </keep-alive>
     <router-view v-if="!$route.meta.keepAlive" class="app transition"/>
   </transition>
 </template>
+
+<script>
+export default {
+  data () {
+    return {
+      hot: false
+    }
+  }
+}
+</script>
 
 <style lang="scss">
   .app {

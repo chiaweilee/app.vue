@@ -2,7 +2,6 @@ const title = require('@/config/html/title')
 
 export default function (to, from, store) {
   // warm start
-  console.log(store.getters.coldStart)
   if (store.getters.coldStart) store.commit('_warmStart')
   // progress finish
   store._vm.$Progress.finish()
