@@ -5,6 +5,8 @@ import Vue, { store, router } from './config/vue'
 import '../src/scss/app.scss'
 import './scss/app.scss'
 
+require('fastclick').attach(document.body)
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
