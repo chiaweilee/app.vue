@@ -12,7 +12,9 @@ export default [
   {
     path: '/@:at(' + reg.at.string + ')',
     name: '@',
-    meta: {},
+    meta: {
+      transition: false
+    },
     components: {
       default: r => require.ensure([], () => r(require('@/components/social/@.vue')), '@')
     }

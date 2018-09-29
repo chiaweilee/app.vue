@@ -16,6 +16,9 @@ module.exports = {
     _slideRight (state) {
       state.transition = 'slide-right'
     },
+    _noTransition (state) {
+      state.transition = ''
+    },
     _warmStart (state) {
       state.coldStart = false
     },

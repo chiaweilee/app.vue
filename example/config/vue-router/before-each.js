@@ -2,12 +2,12 @@
 // Vue-router
 
 export default function (to, from, next, store) {
-  const history = store.getters.history
-  console.log(history)
   if (!store.getters.coldStart) {
     // @warmStart
     // go history
-    if (to.name === history[history.length - 2] && history[history.length - 2].name) {
+    const history = store.getters.history
+    const target = history.length - 2
+    if (to.name === history[target] && history[target].name) {
       // history back
       store.commit('_historyPop')
       // slide left
@@ -16,13 +16,13 @@ export default function (to, from, next, store) {
       // progress start
       store._vm.$Progress.start()
       // history go new
-      store.commit('_historyPush', {
-        name: to.name,
-        query: to.query,
-        params: to.params
-      })
+      store.commit('_historyPush', { name: to.name, query: to.query, params: to.params })
       // slide right
-      store.commit('_slideRight')
+      if (to.meta.transition === false) {
+        store.commit('_noTransition')
+      } else {
+        store.commit('_slideRight')
+      }
     }{
       if (to.name === 'signin' || to.name === 'register') {
         store._vm.$Progress.finish()
@@ -32,16 +32,8 @@ export default function (to, from, next, store) {
   } else {
     // @coldStart
     // new history
-    store.commit('_historyPush', {
-      name: from.name,
-      query: from.query,
-      params: from.params
-    })
-    store.commit('_historyPush', {
-      name: to.name,
-      query: to.query,
-      params: to.params
-    })
+    store.commit('_historyPush', { name: from.name, query: from.query, params: from.params })
+    store.commit('_historyPush', { name: to.name, query: to.query, params: to.params })
   }
   // go next route
   next()
