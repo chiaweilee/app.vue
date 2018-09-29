@@ -14,7 +14,7 @@ export default [
     name: '@',
     meta: {},
     components: {
-      default: r => require.ensure([], () => r(require('@/components/sociality/@.vue')), '@')
+      default: r => require.ensure([], () => r(require('@/components/social/@.vue')), '@')
     }
   },
   {

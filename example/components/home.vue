@@ -25,9 +25,6 @@
 
 <script>
 export default {
-  components: {
-    snake: () => import('./snake.vue')
-  },
   data () {
     return {
       opening: true

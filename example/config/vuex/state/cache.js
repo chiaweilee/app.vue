@@ -8,7 +8,7 @@ const mergeAll = list => {
 }
 
 mergeAll([
-  require('@/components/sociality/extend/airasia/x')
+  require('@/components/social/extend/airasia/x')
 ])
 
 module.exports = cache
