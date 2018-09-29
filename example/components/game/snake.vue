@@ -1,66 +1,41 @@
 <template>
-  <div>111</div>
+  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" :height="h * pix" :width="w * pix">
+    <rect x="0" y="0" :height="h * pix" :width="w * pix" :style="{ stroke: '', fill: bg }"/>
+    <template v-if="snake" v-for="(s, i) in snake">
+      <rect :key="i" :x="s[0] * pix + pix * (1 - mg) / 2" :y="s[1] * pix + pix * (1 - mg) / 2" :height="pix * mg" :width="pix * mg" :style="{ fill: '#3c3' }"/>
+    </template>
+    <rect v-if="food" :x="food[0] * pix + pix * (1 - mg) / 2" :y="food[1] * pix + pix * (1 - mg) / 2" :height="pix * mg" :width="pix * mg" :style="{ fill: '#dc3' }"/>
+  </svg>
 </template>
 
 <script>
-const random = (a, b) => Math.min(a, b) + Math.round(Math.abs(a - b) * Math.random())
+// const random = (a, b) => Math.min(a, b) + Math.round(Math.abs(a - b) * Math.random())
 
 export default {
   data () {
     return {
-      map: [10, 10],
-      snake: null
+      mg: 0.8,
+      food: null,
+      snake: [[4, 5], [5, 5]]
     }
   },
   props: {
-    autoStart: {
-      type: Boolean,
-      default: false
-    },
-    startLength: {
+    pix: {
       type: Number,
-      default: 3
-    }
-  },
-  created () {
-    if (this.autoStart) this.start()
-  },
-  methods: {
-    start () {
-      this.born()
+      default: 10
     },
-    ways ([x, y]) {
-      const ways = [];
-      [[1, 0], [0, 1], [-1, 0], [0, -1]].forEach(([_, __]) => {
-        const X = x + _
-        const Y = y + __
-        if (X < 0 || X >= this.map[0] || Y < 0 || Y >= this.map[1]) {
-          return
-        }
-        ways.push([X, Y])
-      })
-      return ways
+    w: {
+      type: Number,
+      default: 11
     },
-    die () {
-      this.snake = null
+    h: {
+      type: Number,
+      default: 11
     },
-    born () {
-      const getWay = point => (ways = this.ways(point)) => ways[random(0, ways.length)]
-      const head = [random(0, this.map[0]), random(0, this.map[1])]
-      this.snake = [head]
-      while (this.snake.length < 3) {
-        const way = getWay(this.snake[this.snake.length - 1])()
-        if (!way) {
-          // born to die
-          this.die()
-          this.born()
-          break
-        }
-        if (this.snake.indexOf(way) === -1) {
-          this.snake.push(way)
-        }
-      }
-      console.log(this.snake)
+    bg: {
+      type: String,
+      default: '#ddd',
+      validator: t => /^#[0-9a-f]{3}([0-9a-f]{3})?$/i.test(t)
     }
   }
 }
