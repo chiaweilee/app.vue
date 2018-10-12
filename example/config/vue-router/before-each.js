@@ -23,11 +23,6 @@ export default function (to, from, next, store) {
       } else {
         store.commit('_slideRight')
       }
-    }{
-      if (to.name === 'signin' || to.name === 'register') {
-        store._vm.$Progress.finish()
-        return
-      }
     }
   } else {
     // @coldStart
