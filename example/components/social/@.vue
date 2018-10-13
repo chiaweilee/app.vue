@@ -23,6 +23,8 @@ export default {
     }
   },
   created () {
+    // eslint-disable-next-line
+    console.log(sassVars)
     this.mount()
   },
   computed: {
