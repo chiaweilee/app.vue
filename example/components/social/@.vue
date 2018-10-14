@@ -19,12 +19,11 @@ export default {
   data () {
     return {
       theme: null,
-      compo: null
+      compo: null,
+      meta: null
     }
   },
   created () {
-    // eslint-disable-next-line
-    console.log(sassVars)
     this.mount()
   },
   computed: {
@@ -32,13 +31,47 @@ export default {
       return this.$route.params.at
     }
   },
+  destroyed () {
+    if (this.meta) {
+      this.removeMeta(this.meta)
+    }
+  },
   methods: {
     setTheme (to) {
       this.theme = to
+      // eslint-disable-next-line
+      const color = sassVars[`$${to}`]
+      if (color && color.hex) {
+        const meta = document.getElementsByTagName('meta')
+        // check and remove old
+        Object.keys(meta).every(i => {
+          if (meta[i].name !== 'theme-color') {
+            return true
+          }
+          // remove old
+          this.removeMeta(meta[i])
+          return false
+        })
+        // not found, append new
+        this.newMeta({
+          name: 'theme-color',
+          content: color.hex
+        })
+      }
+    },
+    removeMeta (node) {
+      document.getElementsByTagName('head')[0].removeChild(node)
+    },
+    newMeta (option) {
+      const meta = this.meta = document.createElement('meta')
+      Object.keys(option).forEach(key => {
+        meta[key] = option[key]
+      })
+      document.getElementsByTagName('head')[0].appendChild(meta)
     },
     mount () {
       this.compo = () => import(`./extend/${this.at}`)
-    }
+    },
   }
 }
 </script>

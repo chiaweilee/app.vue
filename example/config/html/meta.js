@@ -6,5 +6,6 @@ module.exports = [
   '<meta name="applicable-device" content="mobile">',
   '<meta http-equiv="Cache-Control" content="no-transform">',
   '<meta http-equiv="Cache-Control" content="no-siteapp">',
+  '<meta name="theme-color" content="#fff">',
   '<meta http-equiv=X-UA-Compatible content="IE=Edge, chrome=1">'
 ]
