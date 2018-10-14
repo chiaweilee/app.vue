@@ -34,6 +34,10 @@ export default {
   destroyed () {
     if (this.meta) {
       this.removeMeta(this.meta)
+      this.newMeta({
+        name: 'theme-color',
+        content: '#fff'
+      })
     }
   },
   methods: {
