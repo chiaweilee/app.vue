@@ -10,12 +10,14 @@ dist/
 example/
 server/
 static/
-*.js
 *.html
 .babelrc
 .editorconfig
 .eslintignore
 .eslintrc
+postcss.config.js
+stylelint.config.js
+.eslintrc.js
 webpack.config.js
 README.md
 *.map
