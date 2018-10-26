@@ -5,8 +5,13 @@ yarn-error.log
 .idea/
 .vscode/
 build/
+config/
 dist/
-src/
+example/
+server/
+static/
+*.js
+*.html
 .babelrc
 .editorconfig
 .eslintignore
